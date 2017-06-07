@@ -46,15 +46,16 @@ less signifcant bits, and '=' is used for a code comprised of only padding bits.
 static char _code_table[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
 /* return the index of the code in the code table */
-static char _index_get(char code)
+static int _index_get(char code)
 {
   /* TODO: linear search in the code table, not good... */
-  char i;
+  int i;
   for (i = 0; i < strlen(_code_table); i++)
   {
     if (code == _code_table[i])
-      return i;
+      break;
   }
+  return i;
 }
 
 int base64_encode(const char* data, int data_len, char* encoded)
